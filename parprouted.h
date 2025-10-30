@@ -48,14 +48,14 @@
 #include <unistd.h>
 
 typedef struct arptab_entry {
-        struct in_addr ipaddr_ia;
-        char hwaddr[ARP_TABLE_ENTRY_LEN];
-        char ifname[ARP_TABLE_ENTRY_LEN];
-        time_t tstamp;
-        int route_added;
-        int incomplete;
-        int want_route;
-        struct arptab_entry *next;
+  struct in_addr ipaddr_ia;
+  char hwaddr[ARP_TABLE_ENTRY_LEN];
+  char ifname[ARP_TABLE_ENTRY_LEN];
+  time_t tstamp;
+  int route_added;
+  int incomplete;
+  int want_route;
+  struct arptab_entry* next;
 } ARPTAB_ENTRY;
 
 extern int debug;
@@ -63,16 +63,16 @@ extern int verbose;
 
 extern int option_arpperm;
 
-extern ARPTAB_ENTRY **arptab;
+extern ARPTAB_ENTRY** arptab;
 extern pthread_mutex_t arptab_mutex;
 extern pthread_mutex_t req_queue_mutex;
 
-extern char *ifaces[MAX_IFACES];
+extern char* ifaces[MAX_IFACES];
 extern int last_iface_idx;
 
-extern void *arp(char *ifname);
-extern void refresharp(ARPTAB_ENTRY *list);
-extern void arp_req(char *ifname, struct in_addr remaddr, int gratuitous);
+extern void* arp(char* ifname);
+extern void refresharp(ARPTAB_ENTRY* list);
+extern void arp_req(char* ifname, struct in_addr remaddr, int gratuitous);
 
 extern void parseproc();
 extern void processarp(int cleanup);
